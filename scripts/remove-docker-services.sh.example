@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+eval `docker-machine env $server`
+
+echo $(env | grep DOCKER)
+
+docker rmi -f api-gateway_express_gateway
+
+docker rmi -f redis
+
+docker image prune
+
+docker volume prune
+
+docker container prune
+
+docker system prune

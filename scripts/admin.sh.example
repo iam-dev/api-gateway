@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+echo "create admin user"
+curl -H "Content-Type: application/json" -d '{
+  "username": "admin", 
+  "firstname": "admin",
+  "lastname": "admin"
+}' http://127.0.0.1:9876/users \
+-o admin.out
+echo "create admin credentials"
+curl -H "Content-Type: application/json" -d '{
+  "consumerId": "admin",
+  "type": "key-auth"
+}' http://127.0.0.1:9876/credentials \
+-o admin-credentials.out
